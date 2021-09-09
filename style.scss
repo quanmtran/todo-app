@@ -24,7 +24,7 @@ $dm-very-dark-grayish-blue: hsl(233, 14%, 35%);
 
 $border-radius: 5px;
 $item-min-height: 60px;
-$item-padding: 0 20px;
+$item-padding: 10px 20px;
 
 @mixin flex-box($direction, $justify, $align, $gap) {
 	display: flex;
@@ -138,6 +138,8 @@ body {
 
 				.item-detail {
 					width: 100%;
+					word-wrap: break-word;
+					word-break: break-all;
 
 					&:hover {
 						cursor: pointer;

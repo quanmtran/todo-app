@@ -120,7 +120,7 @@ body .container .input-container {
   gap: center;
   background-color: #fafafa;
   border-radius: 5px;
-  padding: 0 20px;
+  padding: 10px 20px;
   min-height: 60px;
 }
 
@@ -144,7 +144,7 @@ body .container .item-list {
 }
 
 body .container .item-list > div {
-  padding: 0 20px;
+  padding: 10px 20px;
   min-height: 60px;
 }
 
@@ -180,6 +180,8 @@ body .container .item-list .item-container .check-btn:hover {
 
 body .container .item-list .item-container .item-detail {
   width: 100%;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 body .container .item-list .item-container .item-detail:hover {
@@ -244,7 +246,7 @@ body .container .item-list .count-and-clear .filter-btns {
   left: 0;
   right: 0;
   font-size: 1.2em;
-  padding: 0 20px;
+  padding: 10px 20px;
   -webkit-transform: translateY(80px);
           transform: translateY(80px);
   background-color: #fafafa;
