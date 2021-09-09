@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+		<link rel="stylesheet" href="style.css" />
+		<script src="script.js" defer></script>
+		<title>Frontend Mentor | Todo app</title>
+	</head>
+	<body>
+		<div class="background-img"></div>
+		<div class="container">
+			<div class="heading">
+				<div>todo</div>
+				<div class="theme-switch"></div>
+			</div>
+			<div class="input-container">
+				<input type="text" placeholder="Create a new todo..." />
+			</div>
+			<div class="item-list">
+				<div class="count-and-clear">
+					<div class="item-count">
+						<span>0</span>
+						<span>item</span>
+						left
+					</div>
+					<div class="filter-btns">
+						<div class="filter-btn ticked">All</div>
+						<div class="filter-btn">Active</div>
+						<div class="filter-btn">Completed</div>
+					</div>
+					<div class="clear-completed-btn">clear completed</div>
+				</div>
+			</div>
+			<div class="instruction">Drag and drop to reorder list</div>
+			<div class="attribution">
+				Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by
+				<a href="https://github.com/quanmtran" target="_blank">Quan Tran</a>.
+			</div>
+		</div>
+		<template>
+			<div class="item-container" draggable="true">
+				<div class="check-btn"></div>
+				<div class="item-detail"></div>
+				<div class="clear-btn"></div>
+			</div>
+		</template>
+	</body>
+</html>
