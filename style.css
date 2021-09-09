@@ -117,7 +117,7 @@ body .container .input-container {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: center;
+  gap: 0;
   background-color: #fafafa;
   border-radius: 5px;
   padding: 10px 20px;
@@ -133,6 +133,22 @@ body .container .input-container input {
   background-color: inherit;
   color: inherit;
   caret-color: #3a7bfd;
+}
+
+body .container .input-container input::-webkit-input-placeholder {
+  color: #9394a5;
+}
+
+body .container .input-container input:-ms-input-placeholder {
+  color: #9394a5;
+}
+
+body .container .input-container input::-ms-input-placeholder {
+  color: #9394a5;
+}
+
+body .container .input-container input::placeholder {
+  color: #9394a5;
 }
 
 body .container .item-list {
@@ -200,6 +216,10 @@ body .container .item-list .item-container .clear-btn:hover {
   cursor: pointer;
 }
 
+body .container .item-list .item-container.dragging {
+  opacity: 0.5;
+}
+
 body .container .item-list .item-container.checked .check-btn {
   background: url("./images/icon-check.svg"), -webkit-gradient(linear, left top, left bottom, from(#57ddff), to(#c058f3));
   background: url("./images/icon-check.svg"), linear-gradient(#57ddff, #c058f3);
@@ -247,8 +267,6 @@ body .container .item-list .count-and-clear .filter-btns {
   right: 0;
   font-size: 1.2em;
   padding: 10px 20px;
-  -webkit-transform: translateY(80px);
-          transform: translateY(80px);
   background-color: #fafafa;
   border-radius: 5px;
   min-height: 60px;
@@ -266,6 +284,8 @@ body .container .item-list .count-and-clear .filter-btns {
       -ms-flex-align: center;
           align-items: center;
   gap: 30px;
+  -webkit-box-shadow: 0 5px 20px #d2d3db;
+          box-shadow: 0 5px 20px #d2d3db;
 }
 
 body .container .item-list .count-and-clear .filter-btns .filter-btn {
@@ -322,6 +342,13 @@ body .container .attribution a {
   color: #3a7bfd;
 }
 
+body .container .filter-btns,
+body .container .instruction,
+body .container .attribution {
+  -webkit-transform: translateY(80px);
+          transform: translateY(80px);
+}
+
 body.dark-theme {
   background-color: #161722;
   color: #cacde8;
@@ -335,12 +362,28 @@ body.dark-theme .container .heading .theme-switch {
   background-image: url("./images/icon-sun.svg");
 }
 
-body.dark-theme .container .input-container,
-body.dark-theme .container .item-list {
+body.dark-theme .container .input-container {
   background-color: #25273c;
 }
 
+body.dark-theme .container .input-container input::-webkit-input-placeholder {
+  color: #4d5066;
+}
+
+body.dark-theme .container .input-container input:-ms-input-placeholder {
+  color: #4d5066;
+}
+
+body.dark-theme .container .input-container input::-ms-input-placeholder {
+  color: #4d5066;
+}
+
+body.dark-theme .container .input-container input::placeholder {
+  color: #4d5066;
+}
+
 body.dark-theme .container .item-list {
+  background-color: #25273c;
   -webkit-box-shadow: 0 5px 20px black;
           box-shadow: 0 5px 20px black;
 }
@@ -363,6 +406,8 @@ body.dark-theme .container .item-list .count-and-clear {
 
 body.dark-theme .container .item-list .count-and-clear .filter-btns {
   background-color: #25273c;
+  -webkit-box-shadow: 0 5px 20px black;
+          box-shadow: 0 5px 20px black;
 }
 
 body.dark-theme .container .item-list .count-and-clear .filter-btns .filter-btn {
@@ -391,13 +436,23 @@ body.dark-theme .container .instruction {
   }
   body .container .item-list .count-and-clear .filter-btns {
     position: unset;
-    -webkit-transform: unset;
-            transform: unset;
     font-size: 1em;
     padding: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  body .container .filter-btns,
+  body .container .instruction,
+  body .container .attribution {
+    -webkit-transform: unset;
+            transform: unset;
   }
   body.dark-theme .background-img {
     background-image: url("./images/bg-desktop-dark.jpg");
+  }
+  body.dark-theme .container .item-list .count-and-clear .filter-btns {
+    -webkit-box-shadow: none;
+            box-shadow: none;
   }
 }
 /*# sourceMappingURL=style.css.map */

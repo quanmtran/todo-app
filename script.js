@@ -32,21 +32,59 @@ function getAfterElement(y) {
 	).element;
 }
 
-function updateDraggables(container) {
-	container.addEventListener('dragover', (e) => {
+function updateDraggables() {
+	itemList.addEventListener('dragover', (e) => {
 		e.preventDefault();
-		const draggingElement = container.querySelector('.dragging');
+		const draggingElement = itemList.querySelector('.dragging');
 		const afterElement = getAfterElement(e.clientY);
 
 		if (afterElement === null) {
-			container.insertBefore(draggingElement, itemCountElement);
+			itemList.insertBefore(draggingElement, itemCountElement);
 		} else {
-			container.insertBefore(draggingElement, afterElement);
+			itemList.insertBefore(draggingElement, afterElement);
 		}
 	});
 }
 
-function updateItemCount(itemList) {
+function tickFilterBtn(clickedBtn) {
+	filterBtns.forEach((btn) => {
+		btn.classList.remove('ticked');
+	});
+
+	clickedBtn.classList.add('ticked');
+}
+
+function updateItemStatus() {
+	const items = itemList.querySelectorAll('.item-container');
+
+	if (filterActiveBtn.classList.contains('ticked')) {
+		items.forEach((item) => {
+			if (item.classList.contains('checked')) {
+				item.classList.add('hidden');
+			} else {
+				item.classList.remove('hidden');
+			}
+		});
+		return;
+	}
+
+	if (filterCompletedBtn.classList.contains('ticked')) {
+		items.forEach((item) => {
+			if (item.classList.contains('checked')) {
+				item.classList.remove('hidden');
+			} else {
+				item.classList.add('hidden');
+			}
+		});
+		return;
+	}
+
+	items.forEach((item) => {
+		item.classList.remove('hidden');
+	});
+}
+
+function updateItemCount() {
 	const itemUnchecked = itemList.querySelectorAll('.item-container:not(.checked)');
 	var [numberElement, itemStringElement] = [...itemList.querySelectorAll('.item-count>span')];
 
@@ -71,17 +109,19 @@ createNewItemInput.addEventListener('keyup', (e) => {
 
 		detailElement.addEventListener('click', () => {
 			itemContainer.classList.toggle('checked');
-			updateItemCount(itemList);
+			updateItemStatus();
+			updateItemCount();
 		});
 
 		checkBtn.addEventListener('click', () => {
 			itemContainer.classList.toggle('checked');
-			updateItemCount(itemList);
+			updateItemStatus();
+			updateItemCount();
 		});
 
 		clearBtn.addEventListener('click', () => {
 			itemList.removeChild(itemContainer);
-			updateItemCount(itemList);
+			updateItemCount();
 		});
 
 		itemContainer.addEventListener('dragstart', () => {
@@ -94,8 +134,9 @@ createNewItemInput.addEventListener('keyup', (e) => {
 
 		itemList.prepend(clone);
 		createNewItemInput.value = null;
-		updateDraggables(itemList);
-		updateItemCount(itemList);
+		updateDraggables();
+		updateItemStatus();
+		updateItemCount();
 	}
 });
 
@@ -106,45 +147,9 @@ clearCompletedBtn.addEventListener('click', () => {
 	});
 });
 
-function tickFilterBtn(btn) {
-	filterBtns.forEach((btn) => {
-		btn.classList.remove('ticked');
-	});
-	btn.classList.add('ticked');
-}
-
 filterBtns.forEach((btn) => {
 	btn.addEventListener('click', () => {
 		tickFilterBtn(btn);
-
-		const items = itemList.querySelectorAll('.item-container');
-
-		switch (btn) {
-			case filterAllBtn:
-				items.forEach((item) => {
-					item.classList.remove('hidden');
-				});
-				break;
-			case filterActiveBtn:
-				items.forEach((item) => {
-					if (item.classList.contains('checked')) {
-						item.classList.add('hidden');
-					} else {
-						item.classList.remove('hidden');
-					}
-				});
-				break;
-			case filterCompletedBtn:
-				items.forEach((item) => {
-					if (item.classList.contains('checked')) {
-						item.classList.remove('hidden');
-					} else {
-						item.classList.add('hidden');
-					}
-				});
-				break;
-			default:
-				break;
-		}
+		updateItemStatus();
 	});
 });

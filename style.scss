@@ -91,7 +91,7 @@ body {
 
 		.input-container {
 			width: 100%;
-			@include flex-box(row, center, center, center);
+			@include flex-box(row, center, center, 0);
 			background-color: $lm-very-light-gray;
 			border-radius: $border-radius;
 			padding: $item-padding;
@@ -106,6 +106,10 @@ body {
 				background-color: inherit;
 				color: inherit;
 				caret-color: $bright-blue;
+
+				&::placeholder {
+					color: $lm-dark-grayish-blue;
+				}
 			}
 		}
 
@@ -158,6 +162,10 @@ body {
 					}
 				}
 
+				&.dragging {
+					opacity: 0.5;
+				}
+
 				&.checked {
 					.check-btn {
 						background: url('./images/icon-check.svg'), $check-background;
@@ -193,11 +201,11 @@ body {
 					right: 0;
 					font-size: 1.2em;
 					padding: $item-padding;
-					transform: translateY(80px);
 					background-color: $lm-very-light-gray;
 					border-radius: $border-radius;
 					min-height: $item-min-height;
 					@include flex-box(row, center, center, 30px);
+					box-shadow: 0 5px 20px $lm-light-grayish-blue;
 
 					.filter-btn {
 						font-weight: 700;
@@ -242,6 +250,12 @@ body {
 				color: $bright-blue;
 			}
 		}
+
+		.filter-btns,
+		.instruction,
+		.attribution {
+			transform: translateY(80px);
+		}
 	}
 
 	&.dark-theme {
@@ -259,13 +273,20 @@ body {
 				}
 			}
 
-			.input-container,
-			.item-list {
+			.input-container {
 				background-color: $dm-very-dark-desaturated-blue;
+
+				input {
+					&::placeholder {
+						color: $dm-very-dark-grayish-blue;
+					}
+				}
 			}
 
 			.item-list {
+				background-color: $dm-very-dark-desaturated-blue;
 				box-shadow: 0 5px 20px black;
+
 				.item-container {
 					border-color: $dm-very-dark-grayish-blue;
 					.check-btn {
@@ -284,6 +305,7 @@ body {
 
 					.filter-btns {
 						background-color: $dm-very-dark-desaturated-blue;
+						box-shadow: 0 5px 20px black;
 
 						.filter-btn {
 							color: $dm-very-dark-grayish-blue;
@@ -324,17 +346,33 @@ body {
 				.count-and-clear {
 					.filter-btns {
 						position: unset;
-						transform: unset;
 						font-size: 1em;
 						padding: 0;
+						box-shadow: none;
 					}
 				}
+			}
+
+			.filter-btns,
+			.instruction,
+			.attribution {
+				transform: unset;
 			}
 		}
 
 		&.dark-theme {
 			.background-img {
 				background-image: url('./images/bg-desktop-dark.jpg');
+			}
+
+			.container {
+				.item-list {
+					.count-and-clear {
+						.filter-btns {
+							box-shadow: none;
+						}
+					}
+				}
 			}
 		}
 	}
