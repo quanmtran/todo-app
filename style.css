@@ -151,7 +151,7 @@ body .container .input-container input::placeholder {
   color: #9394a5;
 }
 
-body .container .item-list {
+body .container .item-list-container {
   width: 100%;
   background-color: #fafafa;
   border-radius: 5px;
@@ -159,12 +159,8 @@ body .container .item-list {
           box-shadow: 0 5px 20px #d2d3db;
 }
 
-body .container .item-list > div {
+body .container .item-list-container .item-list .item-container {
   padding: 10px 20px;
-  min-height: 60px;
-}
-
-body .container .item-list .item-container {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -183,28 +179,28 @@ body .container .item-list .item-container {
   border-bottom: 2px solid #e4e5f1;
 }
 
-body .container .item-list .item-container .check-btn {
+body .container .item-list-container .item-list .item-container .check-btn {
   height: 30px;
   aspect-ratio: 1/1;
   border: 2px solid #e4e5f1;
   border-radius: 50%;
 }
 
-body .container .item-list .item-container .check-btn:hover {
+body .container .item-list-container .item-list .item-container .check-btn:hover {
   cursor: pointer;
 }
 
-body .container .item-list .item-container .item-detail {
+body .container .item-list-container .item-list .item-container .item-detail {
   width: 100%;
   word-wrap: break-word;
   word-break: break-all;
 }
 
-body .container .item-list .item-container .item-detail:hover {
+body .container .item-list-container .item-list .item-container .item-detail:hover {
   cursor: pointer;
 }
 
-body .container .item-list .item-container .clear-btn {
+body .container .item-list-container .item-list .item-container .clear-btn {
   height: 15px;
   aspect-ratio: 1/1;
   background-image: url("./images/icon-cross.svg");
@@ -212,15 +208,15 @@ body .container .item-list .item-container .clear-btn {
   background-position: center;
 }
 
-body .container .item-list .item-container .clear-btn:hover {
+body .container .item-list-container .item-list .item-container .clear-btn:hover {
   cursor: pointer;
 }
 
-body .container .item-list .item-container.dragging {
+body .container .item-list-container .item-list .item-container.dragging {
   opacity: 0.5;
 }
 
-body .container .item-list .item-container.checked .check-btn {
+body .container .item-list-container .item-list .item-container.checked .check-btn {
   background: url("./images/icon-check.svg"), -webkit-gradient(linear, left top, left bottom, from(#57ddff), to(#c058f3));
   background: url("./images/icon-check.svg"), linear-gradient(#57ddff, #c058f3);
   background-repeat: no-repeat;
@@ -229,17 +225,18 @@ body .container .item-list .item-container.checked .check-btn {
   border: none;
 }
 
-body .container .item-list .item-container.checked .item-detail {
+body .container .item-list-container .item-list .item-container.checked .item-detail {
   text-decoration: line-through;
   color: #d2d3db;
 }
 
-body .container .item-list .item-container.hidden {
+body .container .item-list-container .item-list .item-container.hidden {
   display: none;
 }
 
-body .container .item-list .count-and-clear {
+body .container .item-list-container .count-and-clear {
   min-height: 60px;
+  padding: 10px 20px;
   width: 100%;
   color: #9394a5;
   font-size: 0.8em;
@@ -260,7 +257,7 @@ body .container .item-list .count-and-clear {
   gap: 30px;
 }
 
-body .container .item-list .count-and-clear .filter-btns {
+body .container .item-list-container .count-and-clear .filter-btns {
   position: absolute;
   top: 0;
   left: 0;
@@ -288,25 +285,25 @@ body .container .item-list .count-and-clear .filter-btns {
           box-shadow: 0 5px 20px #d2d3db;
 }
 
-body .container .item-list .count-and-clear .filter-btns .filter-btn {
+body .container .item-list-container .count-and-clear .filter-btns .filter-btn {
   font-weight: 700;
   color: #9394a5;
 }
 
-body .container .item-list .count-and-clear .filter-btns .filter-btn:hover {
+body .container .item-list-container .count-and-clear .filter-btns .filter-btn:hover {
   cursor: pointer;
   color: #484b6a;
 }
 
-body .container .item-list .count-and-clear .filter-btns .filter-btn.ticked {
+body .container .item-list-container .count-and-clear .filter-btns .filter-btn.ticked {
   color: #3a7bfd;
 }
 
-body .container .item-list .count-and-clear .clear-completed-btn {
+body .container .item-list-container .count-and-clear .clear-completed-btn {
   text-transform: capitalize;
 }
 
-body .container .item-list .count-and-clear .clear-completed-btn:hover {
+body .container .item-list-container .count-and-clear .clear-completed-btn:hover {
   cursor: pointer;
   color: #484b6a;
 }
@@ -382,47 +379,47 @@ body.dark-theme .container .input-container input::placeholder {
   color: #4d5066;
 }
 
-body.dark-theme .container .item-list {
+body.dark-theme .container .item-list-container {
   background-color: #25273c;
   -webkit-box-shadow: 0 5px 20px black;
           box-shadow: 0 5px 20px black;
 }
 
-body.dark-theme .container .item-list .item-container {
+body.dark-theme .container .item-list-container .item-list .item-container {
   border-color: #4d5066;
 }
 
-body.dark-theme .container .item-list .item-container .check-btn {
+body.dark-theme .container .item-list-container .item-list .item-container .check-btn {
   border-color: #4d5066;
 }
 
-body.dark-theme .container .item-list .item-container.checked .item-detail {
+body.dark-theme .container .item-list-container .item-list .item-container.checked .item-detail {
   color: #4d5066;
 }
 
-body.dark-theme .container .item-list .count-and-clear {
+body.dark-theme .container .item-list-container .count-and-clear {
   color: #4d5066;
 }
 
-body.dark-theme .container .item-list .count-and-clear .filter-btns {
+body.dark-theme .container .item-list-container .count-and-clear .filter-btns {
   background-color: #25273c;
   -webkit-box-shadow: 0 5px 20px black;
           box-shadow: 0 5px 20px black;
 }
 
-body.dark-theme .container .item-list .count-and-clear .filter-btns .filter-btn {
+body.dark-theme .container .item-list-container .count-and-clear .filter-btns .filter-btn {
   color: #4d5066;
 }
 
-body.dark-theme .container .item-list .count-and-clear .filter-btns .filter-btn:hover {
+body.dark-theme .container .item-list-container .count-and-clear .filter-btns .filter-btn:hover {
   color: #cacde8;
 }
 
-body.dark-theme .container .item-list .count-and-clear .filter-btns .filter-btn.ticked {
+body.dark-theme .container .item-list-container .count-and-clear .filter-btns .filter-btn.ticked {
   color: #3a7bfd;
 }
 
-body.dark-theme .container .item-list .count-and-clear .clear-completed-btn:hover {
+body.dark-theme .container .item-list-container .count-and-clear .clear-completed-btn:hover {
   color: #cacde8;
 }
 
@@ -434,7 +431,7 @@ body.dark-theme .container .instruction {
   body .background-img {
     background-image: url("./images/bg-desktop-light.jpg");
   }
-  body .container .item-list .count-and-clear .filter-btns {
+  body .container .item-list-container .count-and-clear .filter-btns {
     position: unset;
     font-size: 1em;
     padding: 0;
@@ -450,7 +447,7 @@ body.dark-theme .container .instruction {
   body.dark-theme .background-img {
     background-image: url("./images/bg-desktop-dark.jpg");
   }
-  body.dark-theme .container .item-list .count-and-clear .filter-btns {
+  body.dark-theme .container .item-list-container .count-and-clear .filter-btns {
     -webkit-box-shadow: none;
             box-shadow: none;
   }
