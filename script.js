@@ -5,12 +5,27 @@ const clearCompletedBtn = document.querySelector('.clear-completed-btn');
 const filterBtns = document.querySelectorAll('.filter-btn');
 const [filterAllBtn, filterActiveBtn, filterCompletedBtn] = [...filterBtns];
 
+const LOCAL_STORAGE_KEY_IS_DARK_THEME = 'isDarkTheme';
+
+renderTheme();
+
 themeSwitch.addEventListener('click', () => {
-	document.body.classList.toggle('dark-theme');
+	const isDarkTheme = document.body.classList.contains('dark-theme');
+	localStorage.setItem(LOCAL_STORAGE_KEY_IS_DARK_THEME, !isDarkTheme);
+	renderTheme();
 });
 
-const LOCAL_STORAGE_KEY = 'myTodoList';
-const items = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+function renderTheme() {
+	const isDarkTheme = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_IS_DARK_THEME));
+	if (isDarkTheme) {
+		document.body.classList.add('dark-theme');
+	} else {
+		document.body.classList.remove('dark-theme');
+	}
+}
+
+const LOCAL_STORAGE_KEY_MY_TODO_LIST = 'myTodoList';
+const items = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_MY_TODO_LIST)) || [];
 
 renderItemList();
 
@@ -147,13 +162,13 @@ function updateItemsArr() {
 	});
 }
 
-function saveToLocalStorage() {
-	localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(items));
+function saveListToLocalStorage() {
+	localStorage.setItem(LOCAL_STORAGE_KEY_MY_TODO_LIST, JSON.stringify(items));
 }
 
 function updateItemsArrAndSaveToLocalStorage() {
 	updateItemsArr();
-	saveToLocalStorage();
+	saveListToLocalStorage();
 }
 
 function tickFilterBtn(clickedBtn) {
